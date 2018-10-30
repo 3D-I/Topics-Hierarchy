@@ -1,0 +1,10 @@
+<!-- IF not $INCLUDED_JXTOOLSJS -->
+	<!-- INCLUDEJS @threedi_topicshierarchy/lib/jxtools.js -->
+	<!-- DEFINE $INCLUDED_JXTOOLSJS = true -->
+<!-- ENDIF -->
+
+<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
+	<li id="my_list_inner_hidden_container_{topicrow.S_TOPIC_TYPE}" jxdom-closest="div.inner" jxdom-find="dl.row-item > dt :first" jxdom-action="replace" > 
+		<div class="list-inner"><!-- IF S_DISPLAY_ACTIVE and topicrow.S_POST_STICKY -->{L_ACTIVE_STICKIES}<!-- ELSEIF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_POST_GLOBAL -->{L_GLOBAL_ANNOUNCEMENTS}<!-- ELSEIF topicrow.S_POST_ANNOUNCE -->{L_ANNOUNCEMENTS}<!-- ELSEIF topicrow.S_POST_STICKY -->{L_STICKIES}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></div>
+	</li>
+<!-- ENDIF -->
