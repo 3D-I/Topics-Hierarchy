@@ -16,24 +16,34 @@ namespace threedi\topicshierarchy;
 class ext extends \phpbb\extension\base
 {
 	/**
-	 * Check whether or not the extension can be enabled.
-	 * If not tell the user what's going on and why.
+	 * Check whether the extension can be enabled.
+	 * Provides meaningful(s) error message(s) and the back-link on failure.
+	 * CLI and 3.1/3.2 compatible (we do not use the $lang object here on purpose)
 	 *
 	 * @return bool
 	 */
 	public function is_enableable()
 	{
-		$config = $this->container->get('config');
+		$is_enableable = true;
 
-		if (!phpbb_version_compare($config['version'], '3.2.0', '>='))
-		{
-			$this->container->get('language')->add_lang('common', 'threedi/topicshierarchy');
+		$user = $this->container->get('user');
+		$user->add_lang_ext('threedi/topicshierarchy', 'ext_require');
+		$lang = $user->lang;
 
-			trigger_error($this->container->get('language')->lang('EXTENSION_REQUIREMENTS_NOTICE') . adm_back_link(append_sid('index.' . $this->container->getParameter('core.php_ext'), 'i=acp_extensions&amp;mode=main')), E_USER_WARNING);
-		}
-		else
+		if ( !(phpbb_version_compare(PHPBB_VERSION, '3.2.0', '>=') && phpbb_version_compare(PHPBB_VERSION, '3.3.0@dev', '<')) )
 		{
-			return true;
+			$lang['EXTENSION_NOT_ENABLEABLE'] .= '<br>' . $user->lang('TH_ERROR_320_VERSION');
+			$is_enableable = false;
 		}
+
+		if (!phpbb_version_compare(PHP_VERSION, '5.4.7', '>='))
+		{
+			$lang['EXTENSION_NOT_ENABLEABLE'] .= '<br>' . $user->lang('TH_ERROR_PHP_VERSION');
+			$is_enableable = false;
+		}
+
+		$user->lang = $lang;
+
+		return $is_enableable;
 	}
 }
