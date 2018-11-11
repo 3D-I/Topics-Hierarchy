@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * Topics Hierarchy. [Spanish Casual Honorifics]. An extension for the phpBB Forum Software package.
- * Thanks to: Raul [ThE KuKa]
+ * Topics Hierarchy. [English]. An extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2016 - 2017, 3Di, http://3di.space/32/
  * @license GNU General Public License, version 2 (GPL-2.0)
@@ -35,9 +34,6 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'GLOBAL_ANNOUNCEMENTS'			=> 'Anuncios Globales',
-	'STICKIES'						=> 'Fijos',
-	'ACTIVE_STICKIES'				=> 'Fijos Activos',
-	// Installation requirements, added by 3Di
-	'EXTENSION_REQUIREMENTS_NOTICE'	=> 'phpBB 3.2.0 o superior, pero menos de 3.3.0 son los requisitos para esta extensión.',
+	'TH_ERROR_320_VERSION'		=>	'Minimum phpBB version required is 3.2.0 but less than 3.3.0@dev',
+	'TH_ERROR_PHP_VERSION'		=>	'PHP version must be equal or greater than 5.4.7',
 ));
