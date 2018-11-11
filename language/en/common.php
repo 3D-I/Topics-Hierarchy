@@ -34,9 +34,13 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'GLOBAL_ANNOUNCEMENTS'			=> 'Global Announcements',
-	'STICKIES'						=> 'Stickies',
-	'ACTIVE_STICKIES'				=> 'Active Stickies',
+	'TH_SUB_GLOBAL'						=> 'Sub Globals',
+	'TH_GLOBAL_ANNOUNCEMENTS'			=> 'Global Announcements',
+	'TH_ANNOUNCEMENTS'					=> 'Announcements',
+	'TH_STICKIES'						=> 'Stickies',
+	'TH_TOPICS'							=> 'Topics',
+	'TH_ACTIVE_STICKIES'				=> 'Active Stickies',
+	'TH_ACTIVE_TOPICS'					=> 'Active Topics',
 	// Installation requirements
 	'EXTENSION_REQUIREMENTS_NOTICE'	=> 'phpBB 3.2.0 or greater but less than 3.3.0 are the requirements for this extension.',
 ));
